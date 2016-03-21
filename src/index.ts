@@ -2,7 +2,7 @@ import {WebpackState} from './webpack-state';
 export * from './webpack-state';
 
 
-export function hotModuleReplacement(bootloader, module, LOCAL, LOCALSTORAGE_KEY = '@@WEBPACK_INITIAL_DATA') {
+export function hotModuleReplacement(bootloader, module, LOCAL?: boolean, LOCALSTORAGE_KEY: string = '@@WEBPACK_INITIAL_DATA') {
   let COMPONENT_REF = null;
   let DATA = module.hot.data;
 
