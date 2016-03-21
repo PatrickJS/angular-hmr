@@ -18,6 +18,7 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
   const DISPOSE = options.globalDispose || 'WEBPACK_HMR_beforeunload';
   const SAVE_STATE = options.saveState || saveState;
   const ASSIGN = options.assignState || (<any>Object).assign;
+  let disposed = false;
   let DATA = options.data || module.hot.data;
 
 
@@ -64,6 +65,7 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
     return SAVE_STATE(appState);
   }
   (<any>window)[DISPOSE] = () => {
+    disposed = true;
     window.removeEventListener('beforeunload', beforeunload);
     if (LOCAL) {
       localStorage.removeItem(LOCALSTORAGE_KEY);
@@ -93,7 +95,10 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
 
     newNode.style.display = currentDisplay;
 
-    window.removeEventListener('beforeunload', beforeunload);
+    if (!disposed) {
+      window.removeEventListener('beforeunload', beforeunload);
+    }
+    disposed = true;
     console.timeEnd('dispose');
   });
 }
