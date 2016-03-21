@@ -1,0 +1,37 @@
+{
+  "name": "angular2-hmr",
+  "version": "0.1.0",
+  "description": "angular2-hmr: Hot Module Replacement for Webpack and Angular 2",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "state.js",
+    "state.d.ts",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "tsc || true",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gdi2290/webpack-node.git"
+  },
+  "author": "PatrickJS <github@gdi2290.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/gdi2290/webpack-node/issues"
+  },
+  "homepage": "https://github.com/gdi2290/webpack-node#readme",
+  "devDependencies": {
+    "angular2": "^2.0.0-beta.11",
+    "rxjs": "^5.0.0-beta.2",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.9"
+  },
+  "peerDependencies": {
+    "webpack": "*"
+  }
+}
