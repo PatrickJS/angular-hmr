@@ -1,0 +1,51 @@
+import {Provider, OpaqueToken, Optional, Inject} from 'angular2/core';
+
+export const WEBPACK_HMR = new OpaqueToken('$$AppState');
+
+export function provideInitialState(initialState = {}): Provider {
+  return new Provider(WEBPACK_HMR, {useValue: initialState });
+}
+
+export class WebpackState {
+  private _state = {};
+  private _noop = Function.prototype;
+  private _states = [];
+
+  constructor(@Optional() @Inject(WEBPACK_HMR) state?: any) {
+    if (state) {
+      console.log('WebpackState initial data', state);
+    }
+    this._state = state || this._state;
+  }
+
+  set(prop, value) {
+    this._state[prop] = value;
+    return this._state[prop];
+  }
+
+  get(prop) {
+    return this._state[prop];
+  }
+
+  select(name, getState) {
+    this._states.push({ name, getState });
+    return this.set(name, this.get(name) || getState());
+  }
+
+  dispose() {
+    this._states = [];
+  }
+
+  getState() {
+    let initialState = (<any>Object).assign({}, this._state);
+    return this._states
+      .reduce((memo, item) => {
+        memo[item.name] = item.getState();
+        return memo;
+      }, initialState);
+  }
+
+  toJSON() {
+    return this.getState();
+  }
+}
