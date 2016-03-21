@@ -1,6 +1,6 @@
 {
   "name": "angular2-hmr",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "angular2-hmr: Hot Module Replacement for Webpack and Angular 2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
