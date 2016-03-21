@@ -1,11 +1,38 @@
 import {WebpackState} from './webpack-state';
 export * from './webpack-state';
 
+export interface HotModuleReplacementOptions {
+  LOCALSTORAGE_KEY?: string;
+  localStorage?: boolean;
+  storeToken?: any;
+  globalDispose?: string;
+  saveState?: Function;
+  assignState?: Function;
+  data?: any;
+}
 
-export function hotModuleReplacement(bootloader, module, LOCAL?: boolean, LOCALSTORAGE_KEY: string = '@@WEBPACK_INITIAL_DATA') {
+export function hotModuleReplacement(bootloader: Function, module: any, options?: HotModuleReplacementOptions) {
+  const LOCALSTORAGE_KEY = options.LOCALSTORAGE_KEY || '@@WEBPACK_INITIAL_DATA';
+  const LOCAL = options.localStorage || false;
+  const TOKEN = options.storeToken || WebpackState;
+  const DISPOSE = options.globalDispose || 'WEBPACK_HMR_beforeunload';
+  const SAVE_STATE = options.saveState || saveState;
+  const ASSIGN = options.assignState || (<any>Object).assign;
+  let DATA = options.data || module.hot.data;
+
+
   let COMPONENT_REF = null;
-  let DATA = module.hot.data;
 
+  function saveState(appState) {
+    const json = appState.toJSON();
+
+    if (LOCAL) {
+      console.time('localStorage');
+      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(appState));
+      console.timeEnd('localStorage');
+    }
+    return json;
+  }
 
   console.log('DATA', DATA);
   if (!DATA && LOCAL) {
@@ -30,22 +57,13 @@ export function hotModuleReplacement(bootloader, module, LOCAL?: boolean, LOCALS
     });
   }
 
-  function saveState(appState) {
-    const json = appState.toJSON();
 
-    if (LOCAL) {
-      console.time('localStorage');
-      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(appState));
-      console.timeEnd('localStorage');
-    }
-    return json;
-  }
 
   function beforeunload(event) {
-    const appState = COMPONENT_REF.injector.get(WebpackState);
+    const appState = COMPONENT_REF.injector.get(TOKEN);
     return saveState(appState);
   }
-  (<any>window).WEBPACK_HMR_beforeunload = () => {
+  (<any>window)[DISPOSE] = () => {
     window.removeEventListener('beforeunload', beforeunload);
     if (LOCAL) {
       localStorage.removeItem(LOCALSTORAGE_KEY);
@@ -66,10 +84,10 @@ export function hotModuleReplacement(bootloader, module, LOCAL?: boolean, LOCALS
     const parentNode = componentNode.parentNode;
     parentNode.insertBefore(newNode, componentNode);
 
-    const appState = COMPONENT_REF.injector.get(WebpackState);
-    const json = saveState(appState);
+    const appState = COMPONENT_REF.injector.get(TOKEN);
+    const json = SAVE_STATE(appState);
 
-    (<any>Object).assign(data, json);
+    ASSIGN(data, json);
 
     COMPONENT_REF.dispose();
 
