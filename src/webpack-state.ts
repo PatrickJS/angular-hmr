@@ -2,10 +2,6 @@ import {Provider, OpaqueToken, Optional, Inject} from 'angular2/core';
 
 export const WEBPACK_HMR = new OpaqueToken('$$AppState');
 
-export function provideInitialState(initialState = {}): Provider {
-  return new Provider(WEBPACK_HMR, {useValue: initialState });
-}
-
 export class WebpackState {
   private _state = {};
   private _noop = Function.prototype;
@@ -48,4 +44,11 @@ export class WebpackState {
   toJSON() {
     return this.getState();
   }
+}
+
+export function provideInitialState(initialState = {}): Array<Provider> {
+  return [
+    new Provider(WEBPACK_HMR, {useValue: initialState }),
+    new Provider(WebpackState, {useClass: WebpackState})
+  ];
 }
