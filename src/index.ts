@@ -11,7 +11,7 @@ export interface HotModuleReplacementOptions {
   data?: any;
 }
 
-export function hotModuleReplacement(bootloader: Function, module: any, options?: HotModuleReplacementOptions) {
+export function hotModuleReplacement(bootloader: Function, module: any, options: HotModuleReplacementOptions = {}) {
   const LOCALSTORAGE_KEY = options.LOCALSTORAGE_KEY || '@@WEBPACK_INITIAL_DATA';
   const LOCAL = options.localStorage || false;
   const TOKEN = options.storeToken || WebpackState;
