@@ -61,7 +61,7 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
 
   function beforeunload(event) {
     const appState = COMPONENT_REF.injector.get(TOKEN);
-    return saveState(appState);
+    return SAVE_STATE(appState);
   }
   (<any>window)[DISPOSE] = () => {
     window.removeEventListener('beforeunload', beforeunload);
