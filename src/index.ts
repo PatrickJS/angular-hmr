@@ -1,15 +1,8 @@
+import { ComponentRef } from 'angular2/core';
 import {WebpackState} from './webpack-state';
-export * from './webpack-state';
+import {HotModuleReplacementOptions, Store} from './interfaces';
 
-export interface HotModuleReplacementOptions {
-  LOCALSTORAGE_KEY?: string;
-  localStorage?: boolean;
-  storeToken?: any;
-  globalDispose?: string;
-  saveState?: Function;
-  assignState?: Function;
-  data?: any;
-}
+export * from './webpack-state';
 
 export function hotModuleReplacement(bootloader: Function, module: any, options: HotModuleReplacementOptions = {}) {
   const LOCALSTORAGE_KEY = options.LOCALSTORAGE_KEY || '@@WEBPACK_INITIAL_DATA';
@@ -21,17 +14,21 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
   let DATA = options.data || module.hot.data;
 
 
-  let COMPONENT_REF = null;
+  let COMPONENT_REF: ComponentRef = null;
 
-  function saveState(appState) {
-    const json = appState.toJSON();
+  function saveState(store: Store) {
+    const state = store.getState();
 
     if (LOCAL) {
       console.time('localStorage');
-      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(appState));
+      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(state));
       console.timeEnd('localStorage');
     }
-    return json;
+    return state;
+  }
+
+  function importState(store: Store, state: any) {
+    store.importState(DATA);
   }
 
   console.log('DATA', DATA);
@@ -44,17 +41,23 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
       console.log('JSON.parse Error', e);
     }
   }
+
+
+  function bootstrap() {
+    bootloader()
+      .then((cmpRef: ComponentRef) => {
+        COMPONENT_REF = cmpRef;
+        importState(cmpRef.injector.get(TOKEN), DATA);
+      })
+      .then((cmpRef => (console.timeEnd('bootstrap'), cmpRef)));
+  }
+
+
   console.time('bootstrap');
   if (document.readyState === 'complete') {
-    bootloader(DATA)
-      .then((cmpRef: any) => COMPONENT_REF = cmpRef)
-      .then((cmpRef => (console.timeEnd('bootstrap'), cmpRef)));
+    bootstrap();
   } else {
-    document.addEventListener('DOMContentLoaded', () => {
-      bootloader(DATA)
-        .then((cmpRef: any) => COMPONENT_REF = cmpRef)
-        .then((cmpRef => (console.timeEnd('bootstrap'), cmpRef)));
-    });
+    document.addEventListener('DOMContentLoaded', bootstrap);
   }
 
 
