@@ -1,17 +1,15 @@
 import {Provider, OpaqueToken, Optional, Inject} from 'angular2/core';
+import {Store} from './interfaces';
 
 export const WEBPACK_HMR = new OpaqueToken('$$AppState');
 
-export class WebpackState {
+export class WebpackState implements Store {
   private _state = {};
   private _noop = Function.prototype;
   private _states = [];
 
   constructor(@Optional() @Inject(WEBPACK_HMR) state?: any) {
-    if (state) {
-      console.log('WebpackState initial data', state);
-    }
-    this._state = state || this._state;
+    this.importState(state);
   }
 
   set(prop, value) {
@@ -39,6 +37,14 @@ export class WebpackState {
         memo[item.name] = item.getState();
         return memo;
       }, initialState);
+  }
+
+  importState(state?: any) {
+    if (state) {
+      console.log('WebpackState initial data', state)
+    }
+
+    this._state = state || this._state;
   }
 
   toJSON() {
