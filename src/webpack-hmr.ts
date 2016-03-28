@@ -57,7 +57,7 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
 
 
   function beforeunload(event) {
-    const appState = COMPONENT_REF.injector.get(TOKEN);
+    const appState = COMPONENT_REF.injector.getOptional(TOKEN) || TOKEN;
     return GET_STATE(appState);
   }
   (<any>window)[DISPOSE] = () => {
@@ -82,8 +82,8 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
     const parentNode = componentNode.parentNode;
     parentNode.insertBefore(newNode, componentNode);
 
-    const appState = COMPONENT_REF.injector.get(TOKEN);
-    const json = GET_STATE(appState);
+    const appState = COMPONENT_REF.injector.getOptional(TOKEN) || TOKEN;
+    const json = GET_STATE(appState, COMPONENT_REF);
 
     data.state = json;
 
