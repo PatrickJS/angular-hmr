@@ -1,14 +1,14 @@
 import {Provider} from 'angular2/core';
-import {WEBPACK_HMR, WebpackStore} from './webpack-store';
+import {HMR_STATE, HmrStore} from './hmr-store';
 
-export * from './hmr';
-export * from './webpack-decorator';
-export * from './webpack-store';
+export * from './webpack-hmr';
+export * from './hmr-decorator';
+export * from './hmr-store';
 
 
-export function provideInitialState(initialState = {}): Array<Provider> {
+export function provideHmrState(initialState = {}): Array<Provider> {
   return [
-    new Provider(WEBPACK_HMR, {useValue: initialState }),
-    new Provider(WebpackStore, {useClass: WebpackStore})
+    new Provider(HMR_STATE, {useValue: initialState }),
+    new Provider(HmrStore, {useValue: HmrStore})
   ];
 }

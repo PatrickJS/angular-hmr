@@ -1,4 +1,4 @@
-import {WebpackStore} from './webpack-store';
+import {HmrStore} from './hmr-store';
 
 export interface HotModuleReplacementOptions {
   LOCALSTORAGE_KEY?: string;
@@ -13,7 +13,7 @@ export interface HotModuleReplacementOptions {
 export function hotModuleReplacement(bootloader: Function, module: any, options: HotModuleReplacementOptions = {}) {
   const LOCALSTORAGE_KEY = options.LOCALSTORAGE_KEY || '@@WEBPACK_INITIAL_DATA';
   const LOCAL            = options.localStorage     || false;
-  const TOKEN            = options.storeToken       || WebpackStore;
+  const TOKEN            = options.storeToken       || HmrStore;
   const DISPOSE          = options.globalDispose    || 'WEBPACK_HMR_beforeunload';
   const GET_STATE        = options.getState         || getState;
   let DATA               = options.data             || module.hot.data && module.hot.data.state;
