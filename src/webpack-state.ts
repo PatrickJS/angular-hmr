@@ -25,7 +25,16 @@ export class WebpackState {
 
   select(name, getState) {
     this._states.push({ name, getState });
-    return this.set(name, this.get(name) || getState());
+    let defaultData = getState();
+    let currentData = this.get(name);
+
+    if (defaultData && !currentData) {
+      return this.set(name, defaultData);
+    } else if (defaultData && currentData) {
+      return this.set(name, (<any>Object).assign({}, defaultData, currentData));
+    } else {
+      return this.set(name, currentData || defaultData);
+    }
   }
 
   dispose() {
