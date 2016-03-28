@@ -16,7 +16,7 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
   const TOKEN            = options.storeToken       || WebpackStore;
   const DISPOSE          = options.globalDispose    || 'WEBPACK_HMR_beforeunload';
   const GET_STATE        = options.getState         || getState;
-  let DATA               = options.data             || module.hot.data.state;
+  let DATA               = options.data             || module.hot.data && module.hot.data.state;
   let COMPONENT_REF = null;
   let disposed = false;
 
