@@ -2,8 +2,17 @@ import {HmrStore} from './hmr-store';
 
 // noop in parentNode
 // TODO: find a better way to noop
-const _env = process && process.env && process.env.ENV || process.env.NODE_ENV;
-let _dev: boolean = _env && typeof _env === 'string' && (_env.indexOf('dev') > -1);
+const _env = process &&
+  process.env &&
+  process.env.ENV ||
+  process.env.NODE_ENV;
+
+let _dev: boolean = ((
+    _env &&
+    typeof _env === 'string' &&
+    (_env.indexOf('dev') > -1)
+  ) || // default true
+    _env === undefined);
 
 export function setDev(newDev: string | boolean): boolean | void {
   if (typeof newDev === 'string') {
