@@ -1,7 +1,10 @@
 import {HmrStore} from './hmr-store';
 
 export function HmrState(namespaceOrConfig?: string | any, config?: any): Function {
+
   function decoratorFactory(target: any, decoratedPropertyName?: string, descriptor?: any): void {
+    if (!HmrStore.dev) { return descriptor; }
+    
     let key = namespaceOrConfig || target.constructor.name + '#' + decoratedPropertyName;
     HmrStore.select(key, () => HmrStore.get(key));
 

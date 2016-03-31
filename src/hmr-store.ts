@@ -3,6 +3,7 @@ import {OpaqueToken} from 'angular2/core';
 export const HMR_STATE = new OpaqueToken('hmrState');
 
 export class HmrStore {
+  static dev = false;
   static _state = {};
   static _initialValues = {};
   static _states = [];
