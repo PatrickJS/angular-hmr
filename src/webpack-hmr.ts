@@ -11,6 +11,11 @@ export interface HotModuleReplacementOptions {
 }
 
 export function hotModuleReplacement(bootloader: Function, module: any, options: HotModuleReplacementOptions = {}) {
+  if (!module.hot) {
+    console.warn('Warning: please use webpack hot flag');
+    return document.addEventListener('DOMContentLoaded', () => bootloader());
+  }
+
   HmrStore.dev = true;
   const LOCALSTORAGE_KEY = options.LOCALSTORAGE_KEY || '@@WEBPACK_INITIAL_DATA';
   const LOCAL            = options.localStorage     || false;
