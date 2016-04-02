@@ -2,10 +2,11 @@ import {HmrStore} from './hmr-store';
 
 // noop in parentNode
 // TODO: find a better way to noop
-const _env = process &&
+const _env = typeof process !== 'undefined' &&
+  process &&
   process.env &&
-  process.env.ENV ||
-  process.env.NODE_ENV;
+  (process.env.ENV ||
+  process.env.NODE_ENV);
 
 let _dev: boolean = ((
     _env &&
