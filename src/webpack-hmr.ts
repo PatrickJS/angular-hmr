@@ -93,7 +93,7 @@ export function hotModuleReplacement(bootloader: Function, module: any, options:
 
     data.state = json;
 
-    COMPONENT_REF.dispose();
+    COMPONENT_REF.destroy();
 
     newNode.style.display = currentDisplay;
 
