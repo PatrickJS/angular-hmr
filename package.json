@@ -13,7 +13,9 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc || true",
+    "typings": "typings",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm run typings -- install",
     "prepublish": "npm run build"
   },
   "repository": {
