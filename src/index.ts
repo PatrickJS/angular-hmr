@@ -1,4 +1,3 @@
-import {Provider} from '@angular/core';
 import {HMR_STATE, HmrStore} from './hmr-store';
 
 export * from './webpack-hmr';
@@ -6,9 +5,9 @@ export * from './hmr-decorator';
 export * from './hmr-store';
 
 
-export function provideHmrState(initialState = {}): Array<Provider> {
+export function provideHmrState(initialState = {}): Array<any> {
   return [
-    new Provider(HMR_STATE, {useValue: initialState }),
-    new Provider(HmrStore, {useValue: HmrStore})
+    {provide: HMR_STATE, useValue: initialState },
+    {provide: HmrStore, useValue: HmrStore}
   ];
 }
