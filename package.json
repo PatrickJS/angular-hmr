@@ -15,8 +15,7 @@
     "build": "tsc || true",
     "typings": "typings",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm run typings -- install",
-    "prepublish": "npm run build"
+    "prepublish": "npm run typings -- install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,10 +30,14 @@
   "devDependencies": {
     "@angular/core": "2.0.0-rc.1",
     "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12",
     "typescript": "^1.8.9",
+    "webpack": "^1.13.0",
     "typings": "^0.7.9"
   },
   "peerDependencies": {
     "webpack": "*"
+  },
+  "dependencies": {
   }
 }
