@@ -32,10 +32,13 @@ export class AppState {
 `app.service.ts`
 ```typescript
 import {HmrState} from 'angular2-hmr';
-@Component({ /*... /* })
+@Component({ /*... */ })
 export class App {
 
   @HmrState() localState = {};
     
 }
 ```
+
+
+In production set `NODE_ENV` to `"production"` to noop `HmrState` or strip it from your code
