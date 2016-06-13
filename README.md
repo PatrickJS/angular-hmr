@@ -6,6 +6,11 @@ This module requires Angular 2.0.0-rc.1 or higher. Please see repository [Angula
 
 `main.browser.ts`
 ```typescript
+
+function main(initialHMRstate) {
+  // you must return
+  return bootstrap(App, []);
+}
 /*
  * Hot Module Reload
  * experimental version by @gdi2290
@@ -13,7 +18,7 @@ This module requires Angular 2.0.0-rc.1 or higher. Please see repository [Angula
 if (isDevelopment) {
   // activate hot module reload
   let ngHmr = require('angular2-hmr');
-  ngHmr.hotModuleReplacement(main, module);
+  ngHmr.hotModuleReplacement(main, module); // pass the main function
 } else {
   // bootstrap when document is ready
   document.addEventListener('DOMContentLoaded', () => main());
