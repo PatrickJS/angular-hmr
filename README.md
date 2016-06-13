@@ -29,7 +29,7 @@ export class AppState {
 }
 ```
 
-`app.service.ts`
+`app.component.ts`
 ```typescript
 import {HmrState} from 'angular2-hmr';
 @Component({ /*... */ })
