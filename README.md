@@ -47,3 +47,9 @@ export class App {
 
 
 In production set `NODE_ENV` to `"production"` to noop `HmrState` or strip it from your code
+```typescript
+    new NormalModuleReplacementPlugin(
+      /angular2-hmr/,
+      path.join(__dirname, 'node_modules', 'angular2-hmr', 'prod')
+    ),
+```
