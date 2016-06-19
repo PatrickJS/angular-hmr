@@ -50,6 +50,6 @@ In production set `NODE_ENV` to `"production"` to noop `HmrState` or strip it fr
 ```typescript
     new NormalModuleReplacementPlugin(
       /angular2-hmr/,
-      path.join(__dirname, 'node_modules', 'angular2-hmr', 'prod')
+      path.join(__dirname, 'node_modules', 'angular2-hmr', 'prod.js')
     ),
 ```
