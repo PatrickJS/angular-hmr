@@ -1,6 +1,6 @@
 {
   "name": "angular2-hmr",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "angular2-hmr: Hot Module Replacement for Webpack and Angular 2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -21,16 +21,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gdi2290/angular2-hmr.git"
+    "url": "git+https://github.com/angularclass/angular2-hmr.git"
   },
   "author": "PatrickJS <github@gdi2290.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/gdi2290/angular2-hmr/issues"
+    "url": "https://github.com/angularclass/angular2-hmr/issues"
   },
-  "homepage": "https://github.com/gdi2290/angular2-hmr#readme",
+  "homepage": "https://github.com/angularclass/angular2-hmr#readme",
   "devDependencies": {
-    "@angular/core": "2.0.0-rc.2",
+    "@angular/core": "2.0.0-rc.3",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "0.6.12",
     "typescript": "^1.8.9",
