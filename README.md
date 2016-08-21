@@ -15,55 +15,56 @@ This module requires Angular 2.0.0-rc.1 or higher. Please see repository [Angula
 
 `main.browser.ts`
 ```typescript
+import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 
-function main(initialHMRstate) {
-  // you must return
-  return bootstrap(App, []);
+@NgModule({
+  bootstrap: [
+    App
+  ],
+  declarations: [
+    App
+  ],
+  imports: [
+    // Angular 2
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([], {
+      useHash: true
+    }),
+    // app
+    appModule
+    // vendors
+  ],
+  providers: []
+})
+class MainModule {
+  constructor(public appRef: ApplicationRef) {}
+  hmrOnInit(store) {
+    console.log('HMR store', store);
+  }
+  hmrOnDestroy(store) {
+    var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+    // recreate elements
+    store.disposeOldHosts = createNewHosts(cmpLocation)
+    // remove styles
+    removeNgStyles();
+  }
+  hmrAfterDestroy(store) {
+    // display new elements
+    store.disposeOldHosts()
+    delete store.disposeOldHosts;
+  }
 }
-/*
- * Hot Module Reload
- * experimental version by @gdi2290
- */
-if (isDevelopment) {
-  // activate hot module reload
-  let ngHmr = require('angular2-hmr');
-  ngHmr.hotModuleReplacement(main, module); // pass the main function
-} else {
-  // bootstrap when document is ready
-  document.addEventListener('DOMContentLoaded', () => main());
+
+export function main() {
+  return platformBrowserDynamic().bootstrapModule(MainModule);
 }
+
+// boot on document ready
+bootloader(main);
+
 ```
-`app.service.ts`
-```typescript
-import {HmrState} from 'angular2-hmr';
-
-export class AppState {
-  // @HmrState() is used by HMR to track the state of any object during a hot module replacement
-  @HmrState() _state = { };
-}
-```
-
-`app.component.ts`
-```typescript
-import {HmrState} from 'angular2-hmr';
-@Component({ /*... */ })
-export class App {
-
-  @HmrState() localState = {};
-    
-}
-```
-
-
-In production set `NODE_ENV` to `"production"` to noop `HmrState` or strip it from your code
-```typescript
-    new NormalModuleReplacementPlugin(
-      /angular2-hmr/,
-      path.join(__dirname, 'node_modules', 'angular2-hmr', 'prod.js')
-    ),
-```
-
-
 
 ___
 
