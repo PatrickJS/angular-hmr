@@ -11,8 +11,9 @@
 > Angular2-HMR
 
 
-This module requires Angular 2.0.0-rc.1 or higher. Please see repository [Angular 2 Webpack Starter](https://github.com/angularclass/angular2-webpack-starter) for a working example. 
+This module requires Angular 2.0.0-rc.5 or higher. Please see repository [Angular 2 Seed](https://github.com/angularclass/angular2-seed) for a working example. 
 
+also download https://github.com/AngularClass/angular2-hmr-loader
 `main.browser.ts`
 ```typescript
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
