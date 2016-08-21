@@ -10,6 +10,7 @@
 # Angular 2 Hot Module Replacement
 > Angular2-HMR
 
+`npm install @angularclass/hmr @angularclass/hmr-loader`
 
 This module requires Angular 2.0.0-rc.5 or higher. Please see repository [Angular 2 Seed](https://github.com/angularclass/angular2-seed) for a working example. 
 
@@ -42,12 +43,20 @@ import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 class MainModule {
   constructor(public appRef: ApplicationRef) {}
   hmrOnInit(store) {
+    if (!store) return;
     console.log('HMR store', store);
+    console.log('store.OHHAI:', store.OHHAI)
+    // inject AppStore here and update it
+    // this.AppStore.update(store)
   }
   hmrOnDestroy(store) {
     var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     // recreate elements
     store.disposeOldHosts = createNewHosts(cmpLocation)
+    // inject your AppStore and grab state then set it on store
+    // var appState = this.AppStore.get()
+    store.OHHAI = 'yolo'
+    // Object.assign(store, appState)
     // remove styles
     removeNgStyles();
   }
@@ -55,6 +64,7 @@ class MainModule {
     // display new elements
     store.disposeOldHosts()
     delete store.disposeOldHosts;
+    // anything you need done the component is removed
   }
 }
 
