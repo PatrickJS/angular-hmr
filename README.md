@@ -20,12 +20,8 @@ also download https://github.com/AngularClass/angular2-hmr-loader
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 
 @NgModule({
-  bootstrap: [
-    App
-  ],
-  declarations: [
-    App
-  ],
+  bootstrap: [ App ],
+  declarations: [ App ],
   imports: [
     // Angular 2
     BrowserModule,
@@ -76,6 +72,9 @@ export function main() {
 bootloader(main);
 
 ```
+`bootloader` is only needed to detech that the dom is ready before bootstraping otherwise bootstrap. This is needed because that dom is already ready during reloading
+
+
 
 ___
 
