@@ -30,9 +30,22 @@ export function createNewHosts(cmps) {
 }
 
 
+function has(content, str) {
+  return content.indexOf(str) !== -1;
+}
+
+export function hasNgId(content, id) {
+  var ngHost    = '_nghost-'+ id;
+  var ngContent = '_ngcontent-'+ id;
+  return has(content, ngHost) && has(content, ngContent)
+}
+
 // remove old styles
-export function removeNgStyles() {
-  Array.prototype.slice.call(document.head.querySelectorAll('style'), 0)
-    .filter((style) => style.innerText.indexOf('_ng') !== -1)
+export function removeNgStyles(appId, filter) {
+  if (appId) {
+    filter = filter || hasNgId(appId);
+  }
+  var $styles = Array.prototype.slice.call(document.head.querySelectorAll('style'));
+    .filter((style) => filter(style.innerText, appId))
     .map(el => el.remove());
 }
