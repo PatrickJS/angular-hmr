@@ -74,7 +74,26 @@ bootloader(main);
 ```
 `bootloader` is only needed to detech that the dom is ready before bootstraping otherwise bootstrap. This is needed because that dom is already ready during reloading
 
-
+## Production
+In production you only need bootloader which just does this
+```
+export function bootloader(main) {
+  if (document.readyState === 'complete') {
+    main()
+  } else {
+    document.addEventListener('DOMContentLoaded', main);
+  }
+}
+```
+you would bootstrap your app the normal way, in production, afer dom is ready. Also, in production, you should remove the loader
+```
+       {
+          test: /\.ts$/,
+          loaders: [
+            'awesome-typescript-loader',
+          ].concat(prod ? [] : '@angularclass/hmr-loader')
+        },
+```
 
 ___
 
