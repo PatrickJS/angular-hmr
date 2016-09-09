@@ -39,11 +39,15 @@ import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 class MainModule {
   constructor(public appRef: ApplicationRef) {}
   hmrOnInit(store) {
-    if (!store) return;
+    if (!store || !store.state) return;
     console.log('HMR store', store);
-    console.log('store.OHHAI:', store.OHHAI)
+    console.log('store.state.data:', store.state.data)
     // inject AppStore here and update it
-    // this.AppStore.update(store)
+    // this.AppStore.update(store.state)
+    if ('restoreInputValues' in store) { store.restoreInputValues(); }
+    // change detection
+    this.appRef.tick();
+    delete store.restoreInputValues;
   }
   hmrOnDestroy(store) {
     var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
@@ -51,8 +55,10 @@ class MainModule {
     store.disposeOldHosts = createNewHosts(cmpLocation)
     // inject your AppStore and grab state then set it on store
     // var appState = this.AppStore.get()
-    store.OHHAI = 'yolo'
+    store.state = {data: 'yolo'};
     // Object.assign(store, appState)
+    // save input values
+    store.restoreInputValues  = createInputTransfer();
     // remove styles
     removeNgStyles();
   }
@@ -78,6 +84,7 @@ bootloader(main);
 * removeNgStyles
 * createNewHosts and disposeOldHosts
 * bootloader
+* createInputTransfer
 
 ## Production
 In production you only need bootloader which just does this
