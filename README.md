@@ -15,6 +15,9 @@
 This module requires Angular 2.0.0-rc.5 or higher. Please see repository [Angular 2 Seed](https://github.com/angularclass/angular2-seed) for a working example. 
 
 also download https://github.com/AngularClass/angular2-hmr-loader
+
+![hmr-state-dom](https://cloud.githubusercontent.com/assets/1016365/18380378/e573320e-762b-11e6-99e0-cc110ffacc6a.gif)
+
 `main.browser.ts`
 ```typescript
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
