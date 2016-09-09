@@ -12,9 +12,8 @@
 
 `npm install @angularclass/hmr @angularclass/hmr-loader`
 
-This module requires Angular 2.0.0-rc.5 or higher. Please see repository [Angular 2 Seed](https://github.com/angularclass/angular2-seed) for a working example. 
-
-also download https://github.com/AngularClass/angular2-hmr-loader
+Please see repository [AngularClass/angular2-seed](https://github.com/AngularClass/angular2-seed) for a working example.  
+Also download [AngularClass/angular2-hmr-loader](https://github.com/AngularClass/angular2-hmr-loader)
 
 ![hmr-state-dom](https://cloud.githubusercontent.com/assets/1016365/18380378/e573320e-762b-11e6-99e0-cc110ffacc6a.gif)
 
