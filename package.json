@@ -5,10 +5,6 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "state.js",
-    "state.d.ts",
-    "prod.js",
-    "prod.d.ts",
     "dist",
     "src"
   ],
