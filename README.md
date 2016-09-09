@@ -47,6 +47,7 @@ class MainModule {
     if ('restoreInputValues' in store) { store.restoreInputValues(); }
     // change detection
     this.appRef.tick();
+    delete store.state;
     delete store.restoreInputValues;
   }
   hmrOnDestroy(store) {
