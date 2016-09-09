@@ -84,10 +84,10 @@ bootloader(main);
 `bootloader` is only needed to detech that the dom is ready before bootstraping otherwise bootstrap. This is needed because that dom is already ready during reloading
 
 ## Important Helpers
-* removeNgStyles
-* createNewHosts and disposeOldHosts
-* bootloader
-* createInputTransfer
+* **removeNgStyles**: remove angular styles
+* **createNewHosts and disposeOldHosts**: recreate root elements for bootstrapping
+* **bootloader**: boot on document ready or boot if it's already ready
+* **createInputTransfer** and **restoreInputValues**: transfer input DOM state during replacement
 
 ## Production
 In production you only need bootloader which just does this
