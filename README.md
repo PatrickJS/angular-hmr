@@ -44,7 +44,9 @@ class MainModule {
     console.log('store.state.data:', store.state.data)
     // inject AppStore here and update it
     // this.AppStore.update(store.state)
-    if ('restoreInputValues' in store) { store.restoreInputValues(); }
+    if ('restoreInputValues' in store) {
+      store.restoreInputValues();
+    }
     // change detection
     this.appRef.tick();
     delete store.state;
