@@ -59,7 +59,7 @@ class MainModule {
     // inject your AppStore and grab state then set it on store
     // var appState = this.AppStore.get()
     store.state = {data: 'yolo'};
-    // Object.assign(store, appState)
+    // store.state = Object.assign({}, appState)
     // save input values
     store.restoreInputValues  = createInputTransfer();
     // remove styles
