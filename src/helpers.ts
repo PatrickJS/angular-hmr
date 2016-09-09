@@ -36,3 +36,21 @@ export function removeNgStyles() {
     .filter((style) => style.innerText.indexOf('_ng') !== -1)
     .map(el => el.remove());
 }
+
+// get input values
+export function getInputValues() {
+  var inputs = document.querySelectorAll('input');
+  return Array.prototype.slice.slice.call(inputs).map(input => input.value);
+}
+
+// set input values
+export function setInputValues($inputs) {
+  var inputs = document.querySelectorAll('input');
+  if ($inputs && inputs.length === $inputs.length) {
+    $inputs.forEach(function(value, i) {
+      var el = inputs[i];
+      el.value = value;
+      el.dispatchEvent(new CustomEvent('input', {detail: el.value}));
+    });
+  }
+}
