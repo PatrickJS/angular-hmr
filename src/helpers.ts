@@ -47,7 +47,7 @@ export function setInputValues($inputs) {
   const inputs = document.querySelectorAll('input');
   if ($inputs && inputs.length === $inputs.length) {
     $inputs.forEach((value, i) => {
-      const el = inputs[i];
+      const el: any = inputs[i];
       el.value = value;
       el.dispatchEvent(new CustomEvent('input', {detail: el.value}));
     });
