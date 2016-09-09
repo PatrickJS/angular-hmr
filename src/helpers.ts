@@ -10,7 +10,7 @@ export function bootloader(main) {
 
 // create new elements
 export function createNewHosts(cmps) {
-  var components = cmps.map(componentNode => {
+  const components = cmps.map(componentNode => {
     const newNode = document.createElement(componentNode.tagName);
     // display none
     const currentDisplay = newNode.style.display;
@@ -25,7 +25,6 @@ export function createNewHosts(cmps) {
       cmp.newNode = null;
       cmp.currentDisplay = null;
     });
-    components = null;
   }
 }
 
@@ -39,16 +38,16 @@ export function removeNgStyles() {
 
 // get input values
 export function getInputValues() {
-  var inputs = document.querySelectorAll('input');
-  return Array.prototype.slice.slice.call(inputs).map(input => input.value);
+  const inputs = document.querySelectorAll('input');
+  return Array.prototype.slice.call(inputs).map(input => input.value);
 }
 
 // set input values
 export function setInputValues($inputs) {
-  var inputs = document.querySelectorAll('input');
+  const inputs = document.querySelectorAll('input');
   if ($inputs && inputs.length === $inputs.length) {
-    $inputs.forEach(function(value, i) {
-      var el = inputs[i];
+    $inputs.forEach((value, i) => {
+      const el = inputs[i];
       el.value = value;
       el.dispatchEvent(new CustomEvent('input', {detail: el.value}));
     });
