@@ -81,7 +81,7 @@ bootloader(main);
 
 ## Production
 In production you only need bootloader which just does this
-```
+```typescript
 export function bootloader(main) {
   if (document.readyState === 'complete') {
     main()
@@ -91,8 +91,8 @@ export function bootloader(main) {
 }
 ```
 you would bootstrap your app the normal way, in production, afer dom is ready. Also, in production, you should remove the loader
-```
-       {
+```es6
+        {
           test: /\.ts$/,
           loaders: [
             'awesome-typescript-loader',
