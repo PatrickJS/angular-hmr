@@ -53,3 +53,11 @@ export function setInputValues($inputs) {
     });
   }
 }
+
+// get/set input values
+export function createInputTransfer() {
+  const $inputs = getInputValues();
+  return function restoreInputValues() {
+    setInputValues($inputs);
+  }
+}
