@@ -34,7 +34,7 @@
     "typings": "^0.7.9"
   },
   "peerDependencies": {
-    "webpack": "*"
+    "webpack": "~2.1.0-beta.25"
   },
   "dependencies": {
   }
