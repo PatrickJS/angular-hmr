@@ -83,7 +83,7 @@ export function main() {
 bootloader(main);
 
 ```
-`bootloader` is only needed to detech that the dom is ready before bootstraping otherwise bootstrap. This is needed because that dom is already ready during reloading
+`bootloader` is only needed to detect that the dom is ready before bootstraping otherwise bootstrap. This is needed because that dom is already ready during reloading.
 
 ## Important Helpers
 * **removeNgStyles**: remove angular styles
@@ -92,7 +92,7 @@ bootloader(main);
 * **createInputTransfer** and **restoreInputValues**: transfer input DOM state during replacement
 
 ## Production
-In production you only need bootloader which just does this
+In production you only need bootloader which just does this:
 ```typescript
 export function bootloader(main) {
   if (document.readyState === 'complete') {
@@ -102,7 +102,7 @@ export function bootloader(main) {
   }
 }
 ```
-you would bootstrap your app the normal way, in production, afer dom is ready. Also, in production, you should remove the loader
+You would bootstrap your app the normal way, in production, afer dom is ready. Also, in production, you should remove the loader:
 ```es6
         {
           test: /\.ts$/,
