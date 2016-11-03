@@ -1,6 +1,6 @@
 {
   "name": "@angularclass/hmr",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "angular2-hmr: Hot Module Replacement for Webpack and Angular 2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/angularclass/angular2-hmr#readme",
   "devDependencies": {
-    "@angular/core": "2.0.0-rc.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "0.6.12",
-    "typescript": "^1.8.9",
+    "@angular/core": "2.1.2",
+    "rxjs": "5.0.0-rc.1",
+    "zone.js": "0.6.26",
+    "typescript": "2.0.3",
     "webpack": "^1.13.0",
     "typings": "^0.7.9"
   },
