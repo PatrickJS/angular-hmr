@@ -1,5 +1,5 @@
 // Hot Module Replacement
-export function bootloader(main:any) {
+export function bootloader(main: any) {
   if (document.readyState === 'complete') {
     main()
   } else {
@@ -9,8 +9,8 @@ export function bootloader(main:any) {
 
 
 // create new elements
-export function createNewHosts(cmps:any) {
-  const components = cmps.map((componentNode:any) => {
+export function createNewHosts(cmps: any) {
+  const components = cmps.map((componentNode: any) => {
     const newNode = document.createElement(componentNode.tagName);
     // display none
     const currentDisplay = newNode.style.display;
@@ -39,14 +39,14 @@ export function removeNgStyles() {
 // get input values
 export function getInputValues() {
   const inputs = document.querySelectorAll('input');
-  return Array.prototype.slice.call(inputs).map((input:any) => input.value);
+  return Array.prototype.slice.call(inputs).map((input: any) => input.value);
 }
 
 // set input values
-export function setInputValues($inputs:any) {
+export function setInputValues($inputs: any) {
   const inputs = document.querySelectorAll('input');
   if ($inputs && inputs.length === $inputs.length) {
-    $inputs.forEach((value:any, i:number) => {
+    $inputs.forEach((value: any, i: number) => {
       const el: any = inputs[i];
       el.value = value;
       el.dispatchEvent(new CustomEvent('input', {detail: el.value}));
