@@ -48,12 +48,6 @@ export function getInputValues() {
     const inputs = document.querySelectorAll('input, textarea, select');
     
     return Array.prototype.slice.call(inputs).map((input: any) => {
-        let store: {[key: string]: any} = {
-            tag:     input.tagName.toLowerCase(),
-
-    const inputs = document.querySelectorAll('input, textarea, select');
-    
-    return Array.prototype.slice.call(inputs).map((input: any) => {
         let store:
             {
                 tag:     string,
