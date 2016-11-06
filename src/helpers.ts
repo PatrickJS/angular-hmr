@@ -112,12 +112,6 @@ export function setInputValues($inputs: any) {
     $inputs.forEach((store: any, i: number) => {
         if('input' === store.tag || 'textarea' === store.tag) {
             if('input' === store.tag && ('checkbox' === store.type || 'radio' === store.type)) {
-
-    const inputs = document.querySelectorAll('input, textarea');
-    
-    $inputs.forEach((store: any, i: number) => {
-        if('input' === store.tag || 'textarea' === store.tag) {
-            if('input' === store.tag && ('checkbox' === store.type || 'radio' === store.type)) {
                 let selector = 'input' + (null !== store.id ? '#' + store.id : '') + '[type="' + store.type + '"]' + (null !== store.name ? '[name="' + store.name + '"]' : '') +
                                '[value="' + store.value + '"]';
                 let element  = document.body.querySelector(selector);
