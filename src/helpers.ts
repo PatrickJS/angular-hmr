@@ -48,34 +48,44 @@ export function getInputValues() {
     const inputs = document.querySelectorAll('input, textarea, select');
     
     return Array.prototype.slice.call(inputs).map((input: any) => {
-        let store: {[key: string]: any} = {
-            tag:     input.tagName.toLowerCase(),
-            'type':  '',
-            id:      'string' === typeof input.id && input.id.length ? input.id : null,
-            name:    'string' === typeof input.name && input.name.length ? input.name : null,
-            value:   '',
-            checked: false,
-            options: []
-        };
+        let store:
+            {
+                tag:     string,
+                'type':  string,
+                id:      string,
+                name:    string,
+                value:   string,
+                checked: boolean,
+                options: {value: string, selected: boolean}[]
+            }
+            =
+            {
+                tag:     input.tagName.toLowerCase(),
+                'type':  null,
+                id:      'string' === typeof input.id && input.id.length ? input.id : null,
+                name:    'string' === typeof input.name && input.name.length ? input.name : null,
+                value:   '',
+                checked: false,
+                options: []
+            };
         
-        if('input' === input.tagName.toLowerCase()) {
+        if('input' === input.tagName.toLowerCase() || 'textarea' === input.tagName.toLowerCase()) {
             Object.assign(store, {'type': input.type});
             
-            if('checkbox' === input.type || 'radio' === input.type) {
-                return Object.assign(store, {value: input.value, checked: input.checked});
+            if('input' === input.tagName.toLowerCase() && ('checkbox' === input.type || 'radio' === input.type)) {
+                return Object.assign(store, {value: input.value, checked: !!input.checked});
             }
-            else if('image' === input.type) {
+            else if('input' === input.tagName.toLowerCase() && ('image' === input.type || 'button' === input.type || 'submit' === input.type || 'reset' === input.type)) {
+                // These types don't need any config and won't be set later but they match "input"
+                
                 return store;
             }
             else {
                 return Object.assign(store, {value: input.value});
             }
         }
-        else if('textarea' === input.tagName.toLowerCase()) {
-            return Object.assign(store, {value: input.value});
-        }
         else if('select' === input.tagName.toLowerCase()) {
-            let options: {value: string, selected: string|boolean}[] = [];
+            let options: {value: string, selected: boolean}[] = [];
             
             input.childNodes.forEach((option: any, i: number) => {
                 options.push({
@@ -112,7 +122,8 @@ export function setInputValues($inputs: any) {
                     element.dispatchEvent(new CustomEvent('input', {detail: element['checked']}));
                 }
             }
-            else if('input' === store.tag && 'image' === store.type) {
+            else if('input' === store.tagName.toLowerCase() && ('image' === store.type || 'button' === store.type || 'submit' === store.type || 'reset' === store.type)) {
+                // These types don't need any config and thus need no update, they only were stored because they match "input"
             }
             else {
                 if(null === store.id && null === store.name) {
@@ -157,7 +168,7 @@ export function setInputValues($inputs: any) {
                 store.options.forEach((storedOption: any, j: number) => {
                     let option: any = select.querySelector('option[value="' + storedOption.value + '"]');
                     
-                    if(!option && select.childNodes[j] && ('string' !== typeof select.childNodes[j]['value'] || !select.childNodes[j]['value'])) {
+                    if(!option && select.childNodes[j] && ('string' !== typeof select.childNodes[j]['value'] || !select.childNodes[j]['value'].length)) {
                         option = select.childNodes[j];
                     }
                     if(option && !!storedOption.selected) {
