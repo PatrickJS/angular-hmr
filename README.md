@@ -9,6 +9,7 @@
 
 # Angular 2 Hot Module Replacement
 > Angular2-HMR
+Hot Module Reloading for Webpack 2 and Angular 2. All versions of Angular will work with this module
 
 `npm install @angularclass/hmr @angularclass/hmr-loader`
 
