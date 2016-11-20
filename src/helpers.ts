@@ -1,11 +1,14 @@
 // Hot Module Replacement
 export function bootloader(main: any) {
-    if (document.readyState === 'complete') {
-      main()
-    }
-    else {
-      document.addEventListener('DOMContentLoaded', main);
-    }
+  switch (document.readyState) {
+    case 'loading':
+      document.addEventListener('DOMContentLoaded', () => main());
+      break;
+    case 'interactive':
+    case 'complete':
+    default:
+      main();
+  }
 }
 
 
