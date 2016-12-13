@@ -103,7 +103,7 @@ export function bootloader(main) {
   }
 }
 ```
-You would bootstrap your app the normal way, in production, afer dom is ready. Also, in production, you should remove the loader:
+You would bootstrap your app the normal way, in production, after dom is ready. Also, in production, you should remove the loader:
 ```es6
         {
           test: /\.ts$/,
