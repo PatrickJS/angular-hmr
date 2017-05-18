@@ -6,15 +6,21 @@
 
 ---
 
+<p align="center">
+  <a href="http://angularclass.com" target="_blank">
+    <img src="(https://cloud.githubusercontent.com/assets/1016365/26220655/77e69902-3be1-11e7-8305-87471affe598.png" alt="Angular HMR" width="500" height="320"/>
+  </a>
+</p>
 
-# Angular 2 Hot Module Replacement
-> Angular2-HMR
-Hot Module Reloading for Webpack 2 and Angular 2. All versions of Angular will work with this module
+
+# Angular Hot Module Replacement
+> Angular-HMR
+Hot Module Reloading for Webpack 2 and Angular 4. All versions of Angular will work with this module
 
 `npm install @angularclass/hmr @angularclass/hmr-loader`
 
-Please see repository [AngularClass/angular2-seed](https://github.com/AngularClass/angular2-seed) for a working example.  
-Also download [AngularClass/angular2-hmr-loader](https://github.com/AngularClass/angular2-hmr-loader)
+Please see repository [AngularClass/angular-seed](https://github.com/AngularClass/angular-seed) for a working example.  
+Also download [AngularClass/angular-hmr-loader](https://github.com/AngularClass/angular-hmr-loader)
 
 ![hmr-state-dom](https://cloud.githubusercontent.com/assets/1016365/18380378/e573320e-762b-11e6-99e0-cc110ffacc6a.gif)
 
