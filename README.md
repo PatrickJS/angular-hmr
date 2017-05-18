@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="http://angularclass.com" target="_blank">
-    <img src="(https://cloud.githubusercontent.com/assets/1016365/26220655/77e69902-3be1-11e7-8305-87471affe598.png" alt="Angular HMR" width="500" height="320"/>
+    <img src="https://cloud.githubusercontent.com/assets/1016365/26220655/77e69902-3be1-11e7-8305-87471affe598.png" alt="Angular HMR" width="500" height="320"/>
   </a>
 </p>
 
