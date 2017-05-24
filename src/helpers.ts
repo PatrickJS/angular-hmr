@@ -35,9 +35,10 @@ export function createNewHosts(cmps: any) {
 
 // remove old styles
 export function removeNgStyles() {
-    Array.prototype.slice.call(document.head.querySelectorAll('style'), 0)
+    var docHead = document.head;
+    Array.prototype.slice.call(docHead.querySelectorAll('style'), 0)
       .filter((style:any) => style.innerText.indexOf('_ng') !== -1)
-      .map((el:any) => el.remove());
+      .map((el:any) => docHead.removeChild(el));
 }
 
 /**
