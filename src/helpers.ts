@@ -16,18 +16,13 @@ export function bootloader(main: any) {
 export function createNewHosts(cmps: any) {
     const components = cmps.map((componentNode: any) => {
       const newNode = document.createElement(componentNode.tagName);
-      // display none
-      const currentDisplay = newNode.style.display;
-      newNode.style.display = 'none';
       const parentNode = componentNode.parentNode;
       parentNode.insertBefore(newNode, componentNode);
-      return { currentDisplay, newNode };
+      return componentNode;
     });
     return () => {
-        components.forEach((cmp:any) => {
-            cmp.newNode.style.display = cmp.currentDisplay;
-            cmp.newNode = null;
-            cmp.currentDisplay = null;
+        components.forEach((componentNode:any) => {
+            componentNode.remove();
         });
     }
 }
