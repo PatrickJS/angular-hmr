@@ -1,6 +1,6 @@
 {
   "name": "@angularclass/hmr",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "angular-hmr: Hot Module Replacement for Webpack and Angular by @AngularClass",
   "main": "dist/index.js",
   "files": [
