@@ -1,37 +1,35 @@
 {
   "name": "@angularclass/hmr",
-  "version": "1.2.2",
-  "description": "angular2-hmr: Hot Module Replacement for Webpack and Angular 2",
+  "version": "2.1.0",
+  "description": "angular-hmr: Hot Module Replacement for Webpack and Angular by @AngularClass",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc || true",
-    "typings": "typings",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run typings -- install && npm run build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/angularclass/angular2-hmr.git"
+    "url": "git+https://github.com/angularclass/angular-hmr.git"
   },
-  "author": "PatrickJS <github@gdi2290.com>",
+  "author": "PatrickJS <patrick@angularclass.io>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-hmr/issues"
+    "url": "https://github.com/angularclass/angular-hmr/issues"
   },
-  "homepage": "https://github.com/angularclass/angular2-hmr#readme",
+  "homepage": "https://github.com/angularclass/angular-hmr#readme",
   "devDependencies": {
-    "@angular/core": "2.1.2",
-    "rxjs": "5.0.0-rc.1",
-    "zone.js": "0.6.26",
-    "typescript": "2.0.3",
-    "webpack": "^1.13.0",
-    "typings": "^0.7.9"
+    "@angular/core": "~4.2.4",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "^5.0.1",
+    "tslib": "^1.7.1",
+    "typescript": "^2.3.2",
+    "zone.js": "^0.8.12",
+    "webpack": "3"
   },
   "dependencies": {
   }
