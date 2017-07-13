@@ -13,9 +13,6 @@ export function hmrModule(MODULE_REF: any, MODULE: any, CONFIG = MODULE_CONFIG) 
     if (MODULE_REF.instance[MODULE_CONFIG['OnInit']]) {
       if (MODULE['hot']['data']) {
         MODULE_REF.instance[MODULE_CONFIG['OnInit']](MODULE['hot']['data']);
-        Object.keys(MODULE['hot']['data']).forEach((key) => {
-          MODULE['hot']['data'][key] = null;
-        });
       }
     }
     if (MODULE_REF.instance[MODULE_CONFIG['OnStatus']]) {
