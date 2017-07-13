@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/angularclass/angular-hmr.git"
   },
-  "author": "PatrickJS <patrick@angularclass.io>",
+  "author": "PatrickJS <patrick@angularclass.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/angularclass/angular-hmr/issues"
