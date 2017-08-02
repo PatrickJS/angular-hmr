@@ -149,6 +149,10 @@ You should access your environment here and only include this in development.
  */
 export const metaReducers: ActionReducer<any, any>[] = [stateSetter]
 ```
+Simply supply the metaReducer to the `StoreModule` and your're hmr is hooked in.
+```typescript
+ StoreModule.forRoot(reducers, { metaReducers }),
+```
 
 
 
