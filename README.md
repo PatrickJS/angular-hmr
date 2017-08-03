@@ -130,7 +130,8 @@ ___
 ## @NGRX/platform (NGRX 4.x.x)
 To hook into NGRX 4 you simply need to supply a reducer to set the state, and include it in your development metaReducers.
 ```typescript
-function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
+// make sure you export for AoT
+export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state: any, action: any) {
     if (action.type === 'SET_ROOT_STATE') {
       return action.payload;
@@ -156,11 +157,11 @@ Simply supply the metaReducer to the `StoreModule` and your hmr is hooked in.
 
 
 
-enjoy — **AngularClass**
+enjoy — **AngularClass** a **OneSpeed** company
 
 <br><br>
 
-[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://angularclass.com)
-##[AngularClass](https://angularclass.com)
-> Learn AngularJS, Angular 2, and Modern Web Development from the best.
-> Looking for corporate Angular training, want to host us, or Angular consulting? patrick@angularclass.com
+[![OneSpeed](https://user-images.githubusercontent.com/1016365/28739734-462f5210-73b2-11e7-92f7-2aabe05cfefa.png  "OneSpeed")](https://onespeed.io)
+## [OneSpeed](https://onespeed.io)
+> Our experience is vast with OneSpeed successfully creating and delivering solutions for companies like Bloomberg, American Airlines, and IBM.
+> We will tailor our solutions to fit your needs. Web App Development Services, Mobile App Services, Corporate Training contact us at Patrick@OneSpeed.io
