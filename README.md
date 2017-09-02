@@ -7,12 +7,11 @@
 
 # Angular Hot Module Replacement
 > Angular-HMR
-Hot Module Reloading for Webpack 2 and Angular 4. All versions of Angular will work with this module
+Hot Module Reloading for Webpack and Angular. All versions of Angular and Webpack will work with this module
 
-`npm install @angularclass/hmr @angularclass/hmr-loader`
+`npm install @angularclass/hmr`
 
 Please see repository [AngularClass/angular-seed](https://github.com/AngularClass/angular-seed) for a working example.  
-Also download [AngularClass/angular-hmr-loader](https://github.com/AngularClass/angular-hmr-loader)
 
 ![hmr-state-dom](https://cloud.githubusercontent.com/assets/1016365/18380378/e573320e-762b-11e6-99e0-cc110ffacc6a.gif)
 
@@ -108,14 +107,6 @@ export function bootloader(main) {
 }
 ```
 You would bootstrap your app the normal way, in production, after dom is ready. Also, in production, you should remove the loader:
-```es6
-        {
-          test: /\.ts$/,
-          loaders: [
-            'awesome-typescript-loader',
-          ].concat(prod ? [] : '@angularclass/hmr-loader')
-        },
-```
 
 ___
 
