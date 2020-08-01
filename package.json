@@ -3,6 +3,7 @@
   "version": "2.1.3",
   "description": "angular-hmr: Hot Module Replacement for Webpack and Angular by @AngularClass",
   "main": "dist/index.js",
+  "sideEffects": false,
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -32,6 +33,5 @@
     "zone.js": "^0.8.12",
     "webpack": "3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
