@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://tipe.io" target="_blank">
+  <a href="https://github.com/PatrickJS/angular-hmr" target="_blank">
     <img src="https://cloud.githubusercontent.com/assets/1016365/26220655/77e69902-3be1-11e7-8305-87471affe598.png" alt="Angular HMR" width="500" height="320"/>
   </a>
 </p>
@@ -139,11 +139,3 @@ Simply supply the metaReducer to the `StoreModule` and your hmr is hooked in.
 
 
 enjoy — **PatrickJS**
-
-<br><br>
-
-<p align="center">
-  <a href="https://tipe.io/" target="_blank">
-    <img  alt="Tipe" src="https://cdn.tipe.io/tipe/tipe-github.png?auto=compress%2Cformat&w=800&dpr=2" class="img-responsive">
-  </a>
-</p>
