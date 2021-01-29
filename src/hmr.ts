@@ -34,7 +34,6 @@ export function hmrModule(MODULE_REF: any, MODULE: any, CONFIG = MODULE_CONFIG) 
       if (MODULE_REF.instance[MODULE_CONFIG['OnDestroy']]) {
         MODULE_REF.instance[MODULE_CONFIG['OnDestroy']](store);
       }
-      MODULE_REF.destroy();
       if (MODULE_REF.instance[MODULE_CONFIG['AfterDestroy']]) {
         MODULE_REF.instance[MODULE_CONFIG['AfterDestroy']](store);
       }
